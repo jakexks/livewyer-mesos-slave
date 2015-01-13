@@ -19,4 +19,4 @@ do
   fi
 done
 docker -H unix:///docker.sock pull mesosphere/mesos-slave:0.20.1
-docker -H unix:///docker.sock run --rm -i --name=mesos_slave --privileged --net=host -v /sys:/sys -v /usr/bin/docker:/bin/docker:ro -v /var/run/docker.sock:/docker.sock -v /lib64/libdevmapper.so.1.02:/lib/libdevmapper.so.1.02:ro -v /lib64/libpthread.so.0:/lib/libpthread.so.0:ro -v /lib64/libsqlite3.so.0:/lib/libsqlite3.so.0:ro -v /lib64/libudev.so.1:/lib/libudev.so.1:ro mesosphere/mesos-slave:0.20.1 --ip=$HOST_IP --containerizers=docker --master=zk://$ZK:2181/mesos --work_dir=/var/lib/mesos/slave --log_dir=/var/log/mesos/slave
+docker -H unix:///docker.sock run --rm -i --name=mesos_slave --privileged --net=host -v /sys:/sys -v /usr/bin/docker:/usr/bin/docker:ro -v /var/run/docker.sock:/docker.sock -v /lib64/libdevmapper.so.1.02:/lib/libdevmapper.so.1.02:ro -v /lib64/libpthread.so.0:/lib/libpthread.so.0:ro -v /lib64/libsqlite3.so.0:/lib/libsqlite3.so.0:ro -v /lib64/libudev.so.1:/lib/libudev.so.1:ro mesosphere/mesos-slave:0.20.1 --ip=$HOST_IP --containerizers=docker --master=zk://$ZK:2181/mesos --work_dir=/var/lib/mesos/slave --log_dir=/var/log/mesos/slave
